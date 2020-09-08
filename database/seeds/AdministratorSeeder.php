@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AdministratorSeeder extends Seeder
 {
@@ -20,6 +22,7 @@ class AdministratorSeeder extends Seeder
         $administrator->avatar = "avatars/saat-ini-tidak-ada-file.png";
 
         $administrator->save();
+        $role = Role::create(['name' => 'super admin']);
         $administrator->assignRole('super admin');
         $this->command->info("User Admin berhasil diinsert");
     }
